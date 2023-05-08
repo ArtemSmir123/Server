@@ -44,19 +44,17 @@ class SQL {
             return null;
         }
     } // найти пользователя для login
-    protected static boolean findLogin(int login){
+    protected static boolean findLogin(StringBuilder login){
         connect();
         ResultSet s;
         try {
-            s = stmt.executeQuery("SELECT login FROM public.\"Users\" WHERE login = '" + String.valueOf(login)+ "'");
+            s = stmt.executeQuery("SELECT * FROM public.\"Users\" WHERE login = '" + login + "'");
 
             if (s.next()) return true;
-            else {
-                return false;
-            }
         } catch (SQLException e) {
             return false;
         }
+        return false;
     }
     protected static ArrayList<Plane> findPlanes(){
         connect();

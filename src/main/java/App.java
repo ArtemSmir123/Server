@@ -18,50 +18,6 @@ class App {
         System.out.println( "Hello World!" );
         int serverPort = 8000;
         HttpServer server = HttpServer.create(new InetSocketAddress("localhost", serverPort), 0);
-        server.createContext("/finddUser", (exchange -> {
-            InputStream input = exchange.getRequestBody();
-            StringBuilder stringBuilder = new StringBuilder();
-
-            new BufferedReader(new InputStreamReader(input))
-                    .lines()
-                    .forEach( (String s) -> stringBuilder.append(s + "\n") );
-
-            JSONParser parser = new JSONParser();
-            JSONObject query;
-            try {
-                query = (JSONObject) parser.parse(String.valueOf(stringBuilder));
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-            Autorit autorit = new Autorit((String) query.get("login"),(String) query.get("pass"));
-            Users user = API.findUser(autorit);
-
-            JSONObject object = new JSONObject();
-            object.put("login", user.getLogin());
-            object.put("pass", user.getPassword());
-            object.put("role", user.getRole());
-            object.put("name", user.getName());
-            object.put("lastname", user.getLastname());
-
-            OutputStream output = exchange.getResponseBody();
-            StringBuilder htmlBuilder = new StringBuilder();
-            htmlBuilder.append(object.toJSONString());
-            String res = htmlBuilder.toString();
-//            stringBuilder.delete(0, stringBuilder.length() - 1);
-            stringBuilder.append(object.toJSONString());
-//            OutputStreamWriter writer = new OutputStreamWriter(output);
-//            writer.write(object.toString());
-            exchange.sendResponseHeaders(200, stringBuilder.toString().length());
-            output.write(stringBuilder.toString().getBytes());
-//            exchange.sendResponseHeaders(200, writer.toString().length());
-//            output.write(writer.toString().getBytes());
-//            exchange.sendResponseHeaders(200, res.length());
-//            output.write(res.getBytes());
-
-
-            output.flush();
-            exchange.close();
-        })); // создаем контекст с помощью лямбды
         server.createContext("/findUser", (exchange -> {
             InputStream input = exchange.getRequestBody();
             StringBuilder stringBuilder = new StringBuilder();
@@ -88,7 +44,7 @@ class App {
             object.put("name", user.getName());
             object.put("lastname", user.getLastname());
 
-            String respText = new String(object.toJSONString());
+            StringBuilder respText = new StringBuilder(object.toJSONString());
             exchange.sendResponseHeaders(200, respText.toString().getBytes().length);
             OutputStream output = exchange.getResponseBody();
             output.write(respText.toString().getBytes());
@@ -98,7 +54,6 @@ class App {
         server.createContext("/findLogin", (exchange -> {
             InputStream input = exchange.getRequestBody();
             StringBuilder stringBuilder = new StringBuilder();
-
             new BufferedReader(new InputStreamReader(input))
                     .lines()
                     .forEach( (String s) -> stringBuilder.append(s + "\n") );
@@ -110,24 +65,21 @@ class App {
                 throw new RuntimeException(e);
             }
             int k = Integer.parseInt(String.valueOf(query.get("query")));
-            boolean res = API.findLogin(k);
+            boolean res = API.findLogin(new StringBuilder(String.valueOf(query.get("query"))));
             System.out.println("Получили запрос на наличие УЗ по логину \t" + k + "\t" +
                     "" + exchange.getRemoteAddress());
             JSONObject object = new JSONObject();
             object.put("result", res);
-
-
-            String respText = new String(object.toJSONString());
-            exchange.sendResponseHeaders(200, respText.getBytes().length);
+            StringBuilder respText = new StringBuilder(object.toJSONString());
+            exchange.sendResponseHeaders(200, String.valueOf(respText).getBytes().length);
             OutputStream output = exchange.getResponseBody();
-            output.write(respText.toString().getBytes());
+            output.write(String.valueOf(respText).getBytes());
             output.flush();
             exchange.close();
         })); // создаем контекст с помощью лямбды
         server.createContext("/findPlanes", (exchange -> {
             ArrayList<Plane> res = API.findPlanes();
             JSONArray aer = new JSONArray();
-
             for(int i = 0; i < res.size(); i++){
                 JSONObject ss = new JSONObject();
                 ss.put("id_plane", res.get(i).getId_plane().toString());
@@ -142,10 +94,10 @@ class App {
                     "" + exchange.getRemoteAddress());
             JSONObject object = new JSONObject();
             object.put("Plane", aer);
-            String respText = new String(object.toJSONString());
-            exchange.sendResponseHeaders(200, respText.getBytes().length);
+            StringBuilder respText = new StringBuilder(object.toJSONString());
+            exchange.sendResponseHeaders(200, respText.toString().getBytes().length);
             OutputStream output = exchange.getResponseBody();
-            output.write(respText.getBytes());
+            output.write(respText.toString().getBytes());
             output.flush();
             exchange.close();
         })); // создаем контекст с помощью лямбды

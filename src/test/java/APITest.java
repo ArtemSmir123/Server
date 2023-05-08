@@ -1,4 +1,3 @@
-
 import objects.Autorit;
 import objects.Plane;
 import org.json.simple.JSONArray;
@@ -7,18 +6,15 @@ import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
-
-
 public class APITest {
     @Test
-    public void findUser() throws IOException, InterruptedException {
+    public void findUserTest() throws IOException, InterruptedException {
         Autorit a = new Autorit("12345678", "12345678");
         HttpClient client = HttpClient.newHttpClient();
 
