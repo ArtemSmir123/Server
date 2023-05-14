@@ -38,7 +38,10 @@ public class API {
     public static ArrayList<Moder> findModers(){
         return SQL.findModers();
     } // ищем модеров для выгрузки
-    protected static boolean editModerQuery(Moder user, String name, String lastname) {
+    public static boolean editModer(Moder user, String name, String lastname) {
         return SQL.editModerQuery(user, name, lastname);
     } // редактирование модератора
+    public static boolean deleteModer(Moder user){
+        return SQL.deleteModer(user);
+    }
 }

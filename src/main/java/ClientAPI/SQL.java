@@ -155,4 +155,16 @@ class SQL {
         }
         return v == 1;
     } // редактирование модератора
+    protected static boolean deleteModer(Moder user){
+        connect();
+        int v = 0;
+        try{
+            v = stmt.executeUpdate("DELETE FROM public.\"Users\" WHERE login = '"+ user.getLogin().toString() + "'");
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return v == 1;
+    } // удалить модера
 }

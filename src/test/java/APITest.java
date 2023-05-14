@@ -1,19 +1,21 @@
 import objects.Autorit;
 import objects.Moder;
 import objects.Plane;
-import objects.Regist;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.UUID;
 
 public class APITest {
     HttpClient client = HttpClient.newHttpClient();
@@ -180,31 +182,69 @@ public class APITest {
         System.out.println(curTime.getTime());
     }
     @Test
-    public void testUU(){
-        Set<String> nums = regController.arrayList.keySet();
-        Iterator<String> iterator = nums.iterator();
-        Regist asd = null;
-        for (int i = 0; i < nums.size(); i++) {
-            if (iterator.next().toString().equals("12345678")) {
-                System.out.println("поймали неуникальный");
-            }
-        }
+//    public void testUU(){
+//        Set<String> nums = regController.arrayList.keySet();
+//        Iterator<String> iterator = nums.iterator();
+//        Regist asd = null;
+//        for (int i = 0; i < nums.size(); i++) {
+//            if (iterator.next().toString().equals("12345678")) {
+//                System.out.println("поймали неуникальный");
+//            }
+//        }
+//
+//        UUID reg = UUID.randomUUID();
+//        asd = new Regist(reg, "12345678");
+//        RegController.arrayList.put("12345678", asd);
+//
+//        nums = RegController.arrayList.keySet();
+//        iterator = nums.iterator();
+//        asd = null;
+//        for (int i = 0; i < nums.size(); i++) {
+//            if (iterator.next().toString().equals("12345678")) {
+//                System.out.println("поймали неуникальный");
+//            }
+//        }
+//
+//        reg = UUID.randomUUID();
+//        asd = new Regist(reg, "12345678");
+//        RegController.arrayList.put("12345678", asd);
+//    }
+//    @Test
+    public void editModerTest() throws IOException, InterruptedException {
+        JSONObject query = new JSONObject();
+        Moder user = new Moder("98415037", "98415037", "moder", "dsal", "ads");
+        String name = "dfs";
+        String lastname = "dsa";
+        query.put("login", user.getLogin());
+        query.put("password", user.getPassword());
+        query.put("role", user.getRole());
+        query.put("name", user.getName());
+        query.put("lastname", user.getLastname());
+        JSONObject query1 = new JSONObject();
+        query1.put("Moder", query);
+        query1.put("name", name);
+        query1.put("lastname", lastname);
 
-        UUID reg = UUID.randomUUID();
-        asd = new Regist(reg, "12345678");
-        regController.arrayList.put("12345678", asd);
+        System.out.println(query1.toJSONString());
 
-        nums = regController.arrayList.keySet();
-        iterator = nums.iterator();
-        asd = null;
-        for (int i = 0; i < nums.size(); i++) {
-            if (iterator.next().toString().equals("12345678")) {
-                System.out.println("поймали неуникальный");
-            }
-        }
-
-        reg = UUID.randomUUID();
-        asd = new Regist(reg, "12345678");
-        regController.arrayList.put("12345678", asd);
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(socket + "editModer")).POST(HttpRequest.BodyPublishers.ofString(query1.toJSONString())).build();
+        HttpResponse<String> response = null;
+        response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+    }
+    @Test
+    public void deleteModerTest() throws IOException, InterruptedException {
+        Moder moder = new Moder("12334455","12334455", "moder", "aaa", "aaa");
+        JSONObject query = new JSONObject();
+        query.put("login", moder.getLogin());
+        query.put("password", moder.getPassword());
+        query.put("role", moder.getRole());
+        query.put("name", moder.getName());
+        query.put("lastname", moder.getLastname());
+        System.out.println(query);
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(socket + "deleteModer")).POST(HttpRequest.BodyPublishers.ofString(query.toJSONString())).build();
+        HttpResponse<String> response = null;
+        response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
     }
 }
