@@ -25,18 +25,18 @@ public class App {
         HttpServer server = HttpServer.create(new InetSocketAddress("localhost", serverPort), 0);
 
 
-        server.createContext("/findUser", new FindUserHandler(regController)); // поиск пользователя
-        server.createContext("/findLogin", new FindLoginHandler(regController)); // проверка на уникальность логина
-        server.createContext("/findPlanes", new FindPlanesHandler(regController)); // получение самолетов
-        server.createContext("/findPlane", new FindPlaneHandler(regController)); // проверка на уникальность самолета
-        server.createContext("/deletePlane", new DeletePlaneHandler(regController)); // удаление самолета
-        server.createContext("/savePlane", new SavePlaneHandler(regController)); // добавление самолета
-        server.createContext("/updatePlane", new UpdatePlaneHandler(regController)); // обновление самолета
-        server.createContext("/saveModer", new SaveModerHandler(regController)); // создание модератора
-        server.createContext("/findModers", new FindModersHandler(regController)); // получение самолетов
-        server.createContext("/editModer", new EditModerHandler(regController)); // изменение модератора
-        server.createContext("/updateSession", new UpdateSessionHandler(regController)); // изменение модератора
-        server.createContext("/deleteModer", new DeleteModerHandler(regController)); // удаление самолета
+        server.createContext("/findUser", new FindUserHandler()); // поиск пользователя
+        server.createContext("/findLogin", new FindLoginHandler()); // проверка на уникальность логина
+        server.createContext("/findPlanes", new FindPlanesHandler()); // получение самолетов
+        server.createContext("/findPlane", new FindPlaneHandler()); // проверка на уникальность самолета
+        server.createContext("/deletePlane", new DeletePlaneHandler()); // удаление самолета
+        server.createContext("/savePlane", new SavePlaneHandler()); // добавление самолета
+        server.createContext("/updatePlane", new UpdatePlaneHandler()); // обновление самолета
+        server.createContext("/saveModer", new SaveModerHandler()); // создание модератора
+        server.createContext("/findModers", new FindModersHandler()); // получение самолетов
+        server.createContext("/editModer", new EditModerHandler()); // изменение модератора
+        server.createContext("/updateSession", new UpdateSessionHandler()); // изменение модератора
+        server.createContext("/deleteModer", new DeleteModerHandler()); // удаление самолета
 
         ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(1000);
         server.setExecutor(threadPoolExecutor); // создали пул потоков
@@ -45,15 +45,15 @@ public class App {
 
     }
     private static boolean updateRegistration(@NotNull UUID uuid){
-        Set<String> nums = regController.arrayList.keySet();
+        Set<String> nums = RegController.arrayList.keySet();
         Iterator<String> iterator = nums.iterator();
         Regist asd = null;
         for (int i = 0; i < nums.size(); i++) {
-            Regist regis = regController.arrayList.get(iterator.next());
+            Regist regis = RegController.arrayList.get(iterator.next());
             if(regis.getUuid().equals(uuid)){
                 UUID reg = uuid;
                 asd = new Regist(reg, regis.getLogin());
-                regController.arrayList.put(regis.getLogin(), asd);
+                RegController.arrayList.put(regis.getLogin(), asd);
                 return true;
             }
         }

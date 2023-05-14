@@ -4,15 +4,11 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
-import serv.*;
 
 import java.io.*;
 import java.util.UUID;
 
 public class UpdateSessionHandler extends Handler implements HttpHandler {
-    public UpdateSessionHandler(RegController regController) {
-        super(regController);
-    }
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {

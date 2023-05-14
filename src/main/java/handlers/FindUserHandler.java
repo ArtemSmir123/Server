@@ -5,16 +5,13 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import objects.Autorit;
 import objects.Regist;
-import serv.*;
 import objects.Users;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
+
 import java.io.*;
 
 public class FindUserHandler extends Handler implements HttpHandler {
-    public FindUserHandler(RegController regController) {
-        super(regController);
-    }
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {

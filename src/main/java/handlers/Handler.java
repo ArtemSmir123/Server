@@ -10,12 +10,8 @@ import java.util.UUID;
 
 public abstract class Handler {
     JSONParser parser = new JSONParser();
-    public static RegController regController1;
-    Handler(RegController regController){
-        regController1 = regController;
-    }
      protected static Regist registration(String login){
-        Set<String> nums = regController1.arrayList.keySet();
+        Set<String> nums = RegController.arrayList.keySet();
         Iterator<String> iterator = nums.iterator();
         Regist asd = null;
         for (int i = 0; i < nums.size(); i++) {
@@ -26,19 +22,19 @@ public abstract class Handler {
         }
         UUID reg = UUID.randomUUID();
         asd = new Regist(reg, login);
-        regController1.arrayList.put(login, asd);
+        RegController.arrayList.put(login, asd);
         return asd;
     }
     protected static boolean updateRegistration(@NotNull UUID uuid){
-        Set<String> nums = regController1.arrayList.keySet();
+        Set<String> nums = RegController.arrayList.keySet();
         Iterator<String> iterator = nums.iterator();
         Regist asd = null;
         for (int i = 0; i < nums.size(); i++) {
-            Regist regis = regController1.arrayList.get(iterator.next());
+            Regist regis = RegController.arrayList.get(iterator.next());
             if(regis.getUuid().equals(uuid)){
                 UUID reg = uuid;
                 asd = new Regist(reg, regis.getLogin());
-                regController1.arrayList.put(regis.getLogin(), asd);
+                RegController.arrayList.put(regis.getLogin(), asd);
                 return true;
             }
         }

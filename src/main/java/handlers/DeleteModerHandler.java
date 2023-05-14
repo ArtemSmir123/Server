@@ -6,15 +6,10 @@ import com.sun.net.httpserver.HttpHandler;
 import objects.Moder;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
-import serv.*;
 
 import java.io.*;
 
 public class DeleteModerHandler extends Handler implements HttpHandler {
-    public DeleteModerHandler(RegController regController) {
-        super(regController);
-    }
-
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         InputStream input = exchange.getRequestBody();

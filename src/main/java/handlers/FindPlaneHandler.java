@@ -1,18 +1,15 @@
 package handlers;
+
 import ClientAPI.API;
 import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
-import serv.*;
-import com.sun.net.httpserver.HttpHandler;
 
 import java.io.*;
 
 public class FindPlaneHandler extends Handler implements HttpHandler {
 
-    public FindPlaneHandler(RegController regController) {
-        super(regController);
-    }
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {

@@ -6,15 +6,12 @@ import com.sun.net.httpserver.HttpHandler;
 import objects.Plane;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import serv.*;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
 public class FindPlanesHandler extends Handler implements HttpHandler {
-    public FindPlanesHandler(RegController regController) {
-        super(regController);
-    }
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
