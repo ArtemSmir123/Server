@@ -1,15 +1,18 @@
-package handlers;
+package handlers.AdminPack;
 
 import ClientAPI.API;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import handlers.Handler;
+import objects.Moder;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.util.ArrayList;
 
-public class DeletePlaneHandler extends Handler implements HttpHandler {
-
+public class FindDefiniteModersHandler extends Handler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         InputStream input = exchange.getRequestBody();
@@ -17,18 +20,31 @@ public class DeletePlaneHandler extends Handler implements HttpHandler {
         new BufferedReader(new InputStreamReader(input))
                 .lines()
                 .forEach( (String s) -> stringBuilder.append(s + "\n") );
-        JSONObject a;
+
+        JSONObject query;
         try {
-            a = (JSONObject) parser.parse(String.valueOf(stringBuilder));
+            query = (JSONObject) parser.parse(stringBuilder.toString());
         } catch (ParseException e) {
-            System.out.println("При парсинге возникла проблема");
             throw new RuntimeException(e);
         }
-        boolean result = API.deletePlane(Integer.parseInt(a.get("query").toString()));
-        System.out.println("Получили запрос на удаление самолета\t" + a.get("query") + "\t" +
+
+        ArrayList<Moder> res = API.findDefiniteModers((String) query.get("queryString"));
+        JSONArray aer = new JSONArray();
+        for(int i = 0; i < res.size(); i++){
+            JSONObject ss = new JSONObject();
+            ss.put("login", res.get(i).getLogin());
+            ss.put("password",res.get(i).getPassword());
+            ss.put("role",res.get(i).getRole());
+            ss.put("name",res.get(i).getName());
+            ss.put("lastname",res.get(i).getLastname());
+            aer.add(ss);
+        }
+
+        JSONObject object= new JSONObject();
+        object.put("Moder", aer);
+        System.out.println("Получили запрос поиск модераторов\t \t" +
                 "" + exchange.getRemoteAddress());
-        JSONObject object = new JSONObject();
-        object.put("result", result);
+
         StringBuilder respText = new StringBuilder(object.toJSONString());
         exchange.sendResponseHeaders(200, respText.toString().getBytes().length);
         OutputStream output = exchange.getResponseBody();

@@ -1,15 +1,16 @@
-package handlers;
+package handlers.AdminPack;
 
 import ClientAPI.API;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import objects.Moder;
+import handlers.Handler;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
 
-public class SaveModerHandler extends Handler implements HttpHandler {
+public class FindPlaneHandler extends Handler implements HttpHandler {
+
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
@@ -22,24 +23,11 @@ public class SaveModerHandler extends Handler implements HttpHandler {
         try {
             a = (JSONObject) parser.parse(String.valueOf(stringBuilder));
         } catch (ParseException e) {
-            System.out.println("При парсинге возникла проблема");
+            System.out.println("fds");
             throw new RuntimeException(e);
         }
-        JSONObject b = null;
-        try {
-            b = (JSONObject) parser.parse(a.get("Moder").toString());
-        } catch (ParseException e) {
-            System.out.println("При парсинге возникла проблема");
-            throw new RuntimeException(e);
-        }
-        Moder moder = new Moder(
-                b.get("login").toString(),
-                b.get("password").toString(),
-                b.get("role").toString(),
-                b.get("name").toString(),
-                b.get("lastname").toString());
-        boolean result = API.saveModer(moder);
-        System.out.println("Получили запрос на создание модера\t" + b.get("lastname") + " " + b.get("name") + "\t" +
+        boolean result = API.findPlane(new StringBuilder(a.get("query").toString()));
+        System.out.println("Получили запрос на проверку уникальности самолета\t" + a.get("query") + "\t" +
                 "" + exchange.getRemoteAddress());
         JSONObject object = new JSONObject();
         object.put("result", result);

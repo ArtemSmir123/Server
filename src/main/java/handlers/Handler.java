@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.UUID;
 
 public abstract class Handler {
-    JSONParser parser = new JSONParser();
+    protected JSONParser parser = new JSONParser();
      protected static Regist registration(String login){
         Set<String> nums = RegController.arrayList.keySet();
         Iterator<String> iterator = nums.iterator();

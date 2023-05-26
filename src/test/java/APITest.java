@@ -1,4 +1,5 @@
 import objects.Autorit;
+import objects.Flight;
 import objects.Moder;
 import objects.Plane;
 import org.json.simple.JSONArray;
@@ -13,9 +14,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.UUID;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class APITest {
     HttpClient client = HttpClient.newHttpClient();
@@ -246,5 +246,56 @@ public class APITest {
         HttpResponse<String> response = null;
         response = client.send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println(response.body());
+    }
+    @Test
+    public void findDefiniteModersTest() throws IOException, InterruptedException, ParseException {
+        JSONObject query = new JSONObject();
+        query.put("queryString", "Кло Дан");
+        System.out.println(query);
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(socket + "findDefiniteModers")).POST(HttpRequest.BodyPublishers.ofString(query.toJSONString())).build();
+        HttpResponse<String> response = null;
+        response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+        JSONObject array = (JSONObject) parser.parse(response.body());
+    }
+
+    @Test
+    public void saveFlightTest() throws IOException, InterruptedException, ParseException, java.text.ParseException {
+        Calendar ad = new GregorianCalendar();
+        ad.set(2023, Calendar.JANUARY, 29, 19, 15, 14);
+        Calendar ad1 = new GregorianCalendar();
+        ad1.set(2023, Calendar.MARCH, 3, 12, 12, 0);
+        Calendar ad2 = new GregorianCalendar();
+        ad2.set(2023, Calendar.MARCH, 4, 0, 24, 0);
+//        System.out.println(ad.getTime().toString());
+//        System.out.println(ad1.getTime().toString());
+//        System.out.println(ad2.getTime().toString());
+        Flight flight = new Flight(null,
+                "87654321",
+                ad.getTime(),
+                ad1.getTime(),
+                ad2.getTime(),
+                "Moscow",
+                "Yekaterinburg",
+                15);
+
+        JSONObject query = new JSONObject();
+        query.put("id_flight", "null");
+        query.put("id_user", flight.getId_user());
+        query.put("creation_date", flight.getCreation_date().toString());
+        query.put("departure_date", flight.getDeparture_date().toString());
+        query.put("arrival_date", flight.getArrival_date().toString());
+        query.put("departure_city", flight.getDeparture_city());
+        query.put("arrival_city", flight.getArrival_city());
+        query.put("id_plane", String.valueOf(flight.getId_plane()));
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
+        cal.setTime(sdf.parse("Sun Jan 29 19:15:14 YEKT 2023"));// all done
+        System.out.println(cal.getTime());
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(socket + "saveFlight")).POST(HttpRequest.BodyPublishers.ofString(query.toJSONString())).build();
+        HttpResponse<String> response = null;
+        response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+        JSONObject array = (JSONObject) parser.parse(response.body());
     }
 }

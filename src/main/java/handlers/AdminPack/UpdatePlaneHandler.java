@@ -1,14 +1,17 @@
-package handlers;
+package handlers.AdminPack;
 
 import ClientAPI.API;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import handlers.Handler;
+import objects.Plane;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
 
-public class SavePlaneHandler extends Handler implements HttpHandler {
+public class UpdatePlaneHandler extends Handler implements HttpHandler {
+
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         InputStream input = exchange.getRequestBody();
@@ -30,8 +33,13 @@ public class SavePlaneHandler extends Handler implements HttpHandler {
             System.out.println("При парсинге возникла проблема");
             throw new RuntimeException(e);
         }
-        boolean result = API.savePlane(b.get("model").toString(), b.get("fullTitle").toString(), Integer.parseInt(b.get("numberOfSeats").toString()));
-        System.out.println("Получили запрос на добавление самолета\t" + b.get("model") + "\t" +
+        Plane plane = new Plane(
+                Integer.parseInt(b.get("id_plane").toString()),
+                b.get("model").toString(),
+                b.get("fullTitle").toString(),
+                Integer.parseInt(b.get("numberOfSeats").toString()));
+        boolean result = API.updatePlane(plane);
+        System.out.println("Получили запрос на обновление самолета\t" + b.get("model") + "\t" +
                 "" + exchange.getRemoteAddress());
         JSONObject object = new JSONObject();
         object.put("result", result);

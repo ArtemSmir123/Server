@@ -1,8 +1,9 @@
-package handlers;
+package handlers.AdminPack;
 
 import ClientAPI.API;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import handlers.Handler;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 

@@ -1,5 +1,5 @@
 package objects;
-public abstract class Users {
+public abstract class Users implements Objects{
     private final String login;
     private String password;
     private final String role;

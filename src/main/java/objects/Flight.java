@@ -10,8 +10,9 @@ public class Flight {
     private Date arrival_date;
     private String departure_city;
     private String arrival_city;
+    private int id_plane;
 
-    public Flight(Integer id_flight, String id_user, Date creation_date, Date departure_date, Date arrival_date, String departure_city, String arrival_city) {
+    public Flight(Integer id_flight, String id_user, Date creation_date, Date departure_date, Date arrival_date, String departure_city, String arrival_city, int id_plane) {
         this.id_flight = id_flight;
         this.id_user = id_user;
         this.creation_date = creation_date;
@@ -19,8 +20,11 @@ public class Flight {
         this.arrival_date = arrival_date;
         this.departure_city = departure_city;
         this.arrival_city = arrival_city;
+        this.id_plane = id_plane;
     }
-//    public Flight(String id_user, Date creation_date, Date departure_date, Date arrival_date, String departure_city, String arrival_city) {
+
+
+    //    public Flight(String id_user, Date creation_date, Date departure_date, Date arrival_date, String departure_city, String arrival_city) {
 //        this.id_user = id_user;
 //        this.creation_date = creation_date;
 //        this.departure_date = departure_date;
@@ -48,6 +52,10 @@ public class Flight {
     }
     public Integer getId_flight() {
         return id_flight;
+    }
+
+    public int getId_plane() {
+        return id_plane;
     }
 }
 

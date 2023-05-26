@@ -4,29 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07baf3d9-4ec7-4ddf-bf8a-1c46793fc711" name="Changes" comment="реализован findPlane&#10;реализован deletePlane&#10;реализовано еще несколько методов&#10;адрес объединен в строку socket">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/DeleteModerHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/DeletePlaneHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/EditModerHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/FindLoginHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/FindModersHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/FindPlaneHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/FindPlanesHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/FindUserHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/Handler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/SaveModerHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/SavePlaneHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/UpdatePlaneHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/UpdateSessionHandler.java" afterDir="false" />
+    <list default="true" id="07baf3d9-4ec7-4ddf-bf8a-1c46793fc711" name="Changes" comment="Оптимизирован прошлый коммит">
+      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/AdminPack/FindDefiniteModersHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/GetCitiesHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handlers/ModerPack/SaveFlightHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/objects/City.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/objects/Objects.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/GetTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serv/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Server_jar/Server.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ClientAPI/API.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientAPI/API.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ClientAPI/SQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientAPI/SQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/regController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serv/RegController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/DeleteModerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/AdminPack/DeleteModerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/DeletePlaneHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/AdminPack/DeletePlaneHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/EditModerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/AdminPack/UpdateModerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/FindLoginHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/AdminPack/FindLoginHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/FindModersHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/AdminPack/FindModersHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/FindPlaneHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/AdminPack/FindPlaneHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/FindPlanesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/AdminPack/FindPlanesHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/FindUserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/IdentAutentPack/FindUserHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/Handler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/SaveModerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/AdminPack/SaveModerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/SavePlaneHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/AdminPack/SavePlaneHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/UpdatePlaneHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/AdminPack/UpdatePlaneHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/UpdateSessionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/IdentAutentPack/UpdateSessionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Moder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Moder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Regist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Regist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/serv/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serv/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/APITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/APITest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,11 +54,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JavaAutoRunManager">
-    <enabled-run-configurations>
-      <run-configuration type="JUnit" name="APITest" />
-    </enabled-run-configurations>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -61,18 +63,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/Users/artemsmirnov/Documents/Наработки/Server/src/main/java",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.file-colors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/artemsmirnov/Documents/Наработки/Server/src/main/java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="serv" />
@@ -86,8 +88,11 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="objects" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="JUnit.GetTests.getCitiesTest">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="serv.App" />
       <module name="Server" />
@@ -95,31 +100,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="APITest.deleteModerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="APITest.findDefiniteModersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Server" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="APITest" />
-      <option name="METHOD_NAME" value="deleteModerTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="APITest.editModerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Server" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="APITest" />
-      <option name="METHOD_NAME" value="editModerTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="APITest.findLoginTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Server" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="APITest" />
-      <option name="METHOD_NAME" value="findLoginTest" />
+      <option name="METHOD_NAME" value="findDefiniteModersTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -135,13 +120,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="APITest.saveFlightTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Server" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="APITest" />
+      <option name="METHOD_NAME" value="saveFlightTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GetTests.getCitiesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Server" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="GetTests" />
+      <option name="METHOD_NAME" value="getCitiesTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
-        <item itemvalue="JUnit.APITest.deleteModerTest" />
+        <item itemvalue="JUnit.GetTests.getCitiesTest" />
+        <item itemvalue="JUnit.APITest.saveFlightTest" />
         <item itemvalue="JUnit.APITest.findModersTest" />
-        <item itemvalue="JUnit.APITest.editModerTest" />
-        <item itemvalue="JUnit.APITest.findLoginTest" />
+        <item itemvalue="JUnit.APITest.findDefiniteModersTest" />
       </list>
     </recent_temporary>
   </component>
@@ -168,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683556610410</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Оптимизирован прошлый коммит">
+      <created>1684063166609</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1684063166609</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -184,6 +196,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Добавлены корректные реализации &#10;Поиска сотрудника по логину и паролю&#10;Проверки наличия сотрудника в базе&#10;Получение списка самолетов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлены корректные реализации &#10;Поиска сотрудника по логину и паролю&#10;Проверки наличия сотрудника в базе&#10;Получение списка самолетов" />
+    <MESSAGE value="Оптимизирован прошлый коммит" />
+    <option name="LAST_COMMIT_MESSAGE" value="Оптимизирован прошлый коммит" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/APITest.java</url>
+          <line>296</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.util.ConcurrentModificationException" package="java.util" />
+          <option name="timeStamp" value="52" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

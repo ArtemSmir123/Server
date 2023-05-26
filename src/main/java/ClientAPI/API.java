@@ -1,13 +1,8 @@
 package ClientAPI;
 
-import objects.Autorit;
-import objects.Moder;
-import objects.Plane;
-import objects.Users;
+import objects.*;
 import org.jetbrains.annotations.NotNull;
-import org.json.simple.JSONObject;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class API {
@@ -44,4 +39,14 @@ public class API {
     public static boolean deleteModer(Moder user){
         return SQL.deleteModer(user);
     }
+    public static ArrayList<Moder> findDefiniteModers(String searchField){
+        return SQL.findDefiniteModers(searchField);
+    }
+    public static boolean saveFlight(Flight flight){
+        return SQL.saveFlight(flight);
+    }
+
+    public static ArrayList<City> getCities(){
+        return SQL.getCities();
+    } // Получить города
 }

@@ -1,15 +1,15 @@
-package handlers;
+package handlers.IdentAutentPack;
 
-import ClientAPI.API;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import objects.Moder;
+import handlers.Handler;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.util.UUID;
 
-public class EditModerHandler extends Handler implements HttpHandler {
+public class UpdateSessionHandler extends Handler implements HttpHandler {
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
@@ -18,26 +18,22 @@ public class EditModerHandler extends Handler implements HttpHandler {
         new BufferedReader(new InputStreamReader(input))
                 .lines()
                 .forEach( (String s) -> stringBuilder.append(s + "\n") );
-        JSONObject a;
-        JSONObject moder;
-        try {
-            a = (JSONObject) parser.parse(stringBuilder.toString());
-            moder = (JSONObject) parser.parse(a.get("Moder").toString());
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println(a);
-        System.out.println(moder);
-        Moder moder1 = new Moder(moder.get("login").toString(), moder.get("password").toString(), moder.get("role").toString(), moder.get("name").toString(), moder.get("lastname").toString());
-        boolean b = API.editModer(moder1, a.get("name").toString(), a.get("lastname").toString());
 
-        System.out.println("Получили запрос на обновление модерора\t \t" +
-                "" + exchange.getRemoteAddress());
+        JSONObject a = null;
+        try {
+            a = (JSONObject) parser.parse(String.valueOf(stringBuilder));
+        } catch (ParseException e) {
+            System.out.println("сломалось");
+        }
+        UUID uuid = UUID.fromString(String.valueOf(a.get("uuid")));
+        boolean b = updateRegistration(uuid);
         JSONObject object = new JSONObject();
-        if(b) {
+        if (b) {
             object.put("result", true);
+            System.out.println("Получен запрос на обновление сессии " + a.get("uuid"));
         } else {
             object.put("result", false);
+            System.out.println("Получен запрос на обновление пустой сессии " + a.get("uuid"));
         }
         StringBuilder respText = new StringBuilder(object.toJSONString());
         exchange.sendResponseHeaders(200, respText.toString().getBytes().length);
